@@ -5,9 +5,11 @@ const mongoose = require("mongoose");
 const connectDB = require("./config/db");
 const {errorHandler} = require("./middlewares/errorMiddleware");
 
-const productRoutes = require('./routes/productRoutes')
+const productRoutes = require('./routes/productRoutes');
+const usersRoutes = require('./routes/UsersRoute');
 
 const app = express();
+app.use(express.json());
 
 //dotenv configuration
 dotenv.config();
@@ -20,6 +22,7 @@ app.get('/', (req, res) => {
 });
 
 app.use("/api", productRoutes);
+app.use("/api/users", usersRoutes);
 app.use(errorHandler);
 
 app.listen(process.env.PORT, () => {
