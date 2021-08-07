@@ -18,9 +18,9 @@ function App() {
             <Route path="/product/:id" component={Productdetails} />
             <Route path="/cart/:id?" component={CartPage} />
           </Container>
-        </main>  
-        <Footer />
+        </main>
       </Router>
+      <Footer />
     </>
   );
 }
