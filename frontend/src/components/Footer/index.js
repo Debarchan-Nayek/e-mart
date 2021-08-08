@@ -4,7 +4,7 @@ const Footer = (props) => {
   return(
     <>
         <footer>
-            <Container>
+            <Container className="mt-5">
                 <Row>
                     <Col md={12} className="text-center">
                         <span>Copyright © 2021 Debarchan Nayek.All Rights Reserved</span>

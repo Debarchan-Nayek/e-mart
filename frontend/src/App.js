@@ -6,6 +6,7 @@ import HomePage from './pages/Home';
 import CartPage from './pages/CartPage';
 import Productdetails from './pages/ProductDetails'
 import { BrowserRouter as Router, Route} from 'react-router-dom';
+import Login from './pages/Login';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <main className="my-3">
           <Container className="mt-4">
             <Route path="/" component={HomePage} exact />
+            <Route path="/login" component={Login} exact />
             <Route path="/product/:id" component={Productdetails} />
             <Route path="/cart/:id?" component={CartPage} />
           </Container>

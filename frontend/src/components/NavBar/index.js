@@ -34,7 +34,7 @@ const NavBar = (props) => {
                   Cart
                 </Nav.Link>
               </LinkContainer>
-              <LinkContainer to="/signin">
+              <LinkContainer to="/login">
                 <Nav.Link className="navLink">
                   <FaUser /> Signin
                 </Nav.Link>
