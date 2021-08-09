@@ -39,7 +39,7 @@ const authController = asyncHandler(async (req, res) => {
         });
     }else{
         res.status(401);
-        throw new errorHandler("Invalid Email or Password");
+        throw new Error("Invalid Email or Password");
     }
 
 });
@@ -59,4 +59,32 @@ const getUserProfile = asyncHandler(async (req, res) => {
     }
 });
 
-module.exports = { authController, getUserProfile, registerUser };
+
+const updateUserProfile = asyncHandler(async(req, res) => {
+    const user = await User.findById(req.user._id)
+    if(user){
+        user.name = req.body.name || user.name
+        user.email = req.body.email || user.email
+        if(req.body.password){
+            user.password = req.body.password
+        }
+        const updateUser = await user.save()
+        res.json({
+          _id: updateUser._id,
+          name: updateUser.name,
+          email: updateUser.email,
+          isAdmin: updateUser.isAdmin,
+          token: generateToken(updateUser._id),
+        });
+    }else{
+        res.status(404)
+        throw new Error('User not Found!')
+    }
+})
+
+module.exports = {
+  authController,
+  getUserProfile,
+  registerUser,
+  updateUserProfile,
+};
