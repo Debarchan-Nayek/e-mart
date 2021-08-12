@@ -10,6 +10,8 @@ import Productdetails from './pages/ProductDetails'
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ProfilePage from "./pages/ProfilePage";
+import ShippingPage from "./pages/ShippingPage"
+import PaymentPage from './pages/PaymentPage';
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
             <Route path="/register" component={Register} exact />
             <Route path="/product/:id" component={Productdetails} />
             <Route path="/cart/:id?" component={CartPage} />
+            <Route path="/shipping" component={ShippingPage} exact />
+            <Route path="/payment" component={PaymentPage} exact />
           </Container>
         </main>
       </Router>
