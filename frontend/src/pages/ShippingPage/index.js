@@ -7,7 +7,7 @@ import CheckoutSteps from '../../components/CheckoutSteps';
 
 const ShippingPage = ({history}) => {
     const dispatch = useDispatch();
-    const cart = useSelector(state => state.cart)
+    const cart = useSelector((state) => state.cart)
     const {shippingAddress} = cart
 
     const [address, setAddress] = useState(shippingAddress.address)
@@ -17,7 +17,7 @@ const ShippingPage = ({history}) => {
 
     const submitHandler = (e) => {
         e.preventDefault()
-        dispatch(saveShippingAddress(address, city, postalCode, country));
+        dispatch(saveShippingAddress({address, city, postalCode, country}));
         history.push('/payment');
     }
 

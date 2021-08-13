@@ -12,6 +12,9 @@ import Register from "./pages/Register";
 import ProfilePage from "./pages/ProfilePage";
 import ShippingPage from "./pages/ShippingPage"
 import PaymentPage from './pages/PaymentPage';
+import OrderPage from './pages/OrderPage';
+import OrderDetailsPage from './pages/OrderDetailsPage';
+
 
 function App() {
   return (
@@ -21,13 +24,15 @@ function App() {
         <main className="my-3">
           <Container className="mt-4">
             <Route path="/" component={HomePage} exact />
-            <Route path="/login" component={Login} exact />
-            <Route path="/profile" component={ProfilePage} exact />
-            <Route path="/register" component={Register} exact />
+            <Route path="/login" component={Login}  />
+            <Route path="/profile" component={ProfilePage}  />
+            <Route path="/register" component={Register}  />
             <Route path="/product/:id" component={Productdetails} />
             <Route path="/cart/:id?" component={CartPage} />
-            <Route path="/shipping" component={ShippingPage} exact />
-            <Route path="/payment" component={PaymentPage} exact />
+            <Route path="/shipping" component={ShippingPage}  />
+            <Route path="/payment" component={PaymentPage}  />
+            <Route path="/placeorder" component={OrderPage}  />
+            <Route path="/order/:id" component={OrderDetailsPage}  />
           </Container>
         </main>
       </Router>

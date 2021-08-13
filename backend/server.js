@@ -7,6 +7,7 @@ const {errorHandler} = require("./middlewares/errorMiddleware");
 
 const productRoutes = require('./routes/productRoutes');
 const usersRoutes = require('./routes/UsersRoute');
+const orderRoutes = require('./routes/orderRoutes');
 
 const app = express();
 app.use(express.json());
@@ -23,6 +24,7 @@ app.get('/', (req, res) => {
 
 app.use("/api", productRoutes);
 app.use("/api/users", usersRoutes);
+app.use("/api/orders", orderRoutes);
 app.use(errorHandler);
 
 app.listen(process.env.PORT, () => {
