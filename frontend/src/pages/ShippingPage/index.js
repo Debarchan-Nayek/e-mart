@@ -25,8 +25,9 @@ const ShippingPage = ({history}) => {
     <>
       <FormContainer>
         <CheckoutSteps step1 step2 />
-        <Form onSubmit={submitHandler}>
-          <Form.Group controlId="address">
+        <h1>Shipping</h1>
+        <Form>
+          <Form.Group>
             <Form.Label>Address</Form.Label>
             <Form.Control
               type="text"
@@ -37,7 +38,7 @@ const ShippingPage = ({history}) => {
             ></Form.Control>
           </Form.Group>
 
-          <Form.Group controlId="city">
+          <Form.Group>
             <Form.Label>City</Form.Label>
             <Form.Control
               type="text"
@@ -48,7 +49,7 @@ const ShippingPage = ({history}) => {
             ></Form.Control>
           </Form.Group>
 
-          <Form.Group controlId="postalCode">
+          <Form.Group>
             <Form.Label>Postal Code</Form.Label>
             <Form.Control
               type="text"
@@ -59,7 +60,7 @@ const ShippingPage = ({history}) => {
             ></Form.Control>
           </Form.Group>
 
-          <Form.Group controlId="country">
+          <Form.Group>
             <Form.Label>Country</Form.Label>
             <Form.Control
               type="text"
@@ -70,7 +71,7 @@ const ShippingPage = ({history}) => {
             ></Form.Control>
           </Form.Group>
 
-          <Button className="mt-3" type="submit" variant="primary">
+          <Button className="mt-3" onClick={submitHandler} variant="primary">
             Continue
           </Button>
         </Form>

@@ -21,7 +21,7 @@ const PaymentPage = ({history}) => {
     <>
       <CheckoutSteps step1 step2 step3 />
       <h1>Payment Method</h1>
-      <Form onSubmit={submitHandler}>
+      <Form>
         <Form.Group>
           <Form.Label as="legend">Select Payment Method</Form.Label>
           <Col>
@@ -45,7 +45,7 @@ const PaymentPage = ({history}) => {
             ></Form.Check> */}
           </Col>
         </Form.Group>
-        <Button type="submit">Continue</Button>
+        <Button onClick={submitHandler}>Continue</Button>
       </Form>
     </>
   );
