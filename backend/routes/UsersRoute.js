@@ -5,6 +5,7 @@ const {
   registerUser,
   updateUserProfile,
   getUsers,
+  deleteUser,
 } = require("../controllers/usersController");
 
 const {protect, admin} = require('../middlewares/authMiddleware')
@@ -23,4 +24,5 @@ router
   .get(protect, getUserProfile)
   .put(protect, updateUserProfile);  
 
+router.route("/:id").delete(protect, admin, deleteUser);
 module.exports = router;

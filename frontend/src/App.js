@@ -14,6 +14,7 @@ import ShippingPage from "./pages/ShippingPage"
 import PaymentPage from './pages/PaymentPage';
 import OrderPage from './pages/OrderPage';
 import OrderDetailsPage from './pages/OrderDetailsPage';
+import UserListPage from './pages/UserList';
 
 
 function App() {
@@ -24,15 +25,16 @@ function App() {
         <main className="my-3">
           <Container className="mt-4">
             <Route path="/" component={HomePage} exact />
-            <Route path="/login" component={Login}  />
-            <Route path="/profile" component={ProfilePage}  />
-            <Route path="/register" component={Register}  />
+            <Route path="/login" component={Login} />
+            <Route path="/profile" component={ProfilePage} />
+            <Route path="/register" component={Register} />
             <Route path="/product/:id" component={Productdetails} />
             <Route path="/cart/:id?" component={CartPage} />
-            <Route path="/shipping" component={ShippingPage}  />
-            <Route path="/payment" component={PaymentPage}  />
-            <Route path="/placeorder" component={OrderPage}  />
-            <Route path="/order/:id" component={OrderDetailsPage}  />
+            <Route path="/shipping" component={ShippingPage} />
+            <Route path="/payment" component={PaymentPage} />
+            <Route path="/placeorder" component={OrderPage} />
+            <Route path="/order/:id" component={OrderDetailsPage} />
+            <Route path="/admin/userlist" component={UserListPage} />
           </Container>
         </main>
       </Router>
