@@ -5,7 +5,12 @@ import { useDispatch, useSelector } from "react-redux";
 import Message from "../../components/Message";
 import Loader from "../../components/Loader";
 import {  FaEdit, FaTrash, FaPlus } from "react-icons/fa";
-import { listProducts, deleteProducts } from '../../actions/productActions'
+import {
+  listProducts,
+  deleteProducts,
+  createProduct,
+} from "../../actions/productActions";
+import { PRODUCT_CREATE_RESET } from "../../constants/productConstants";
 
 const ProductListPage = ({ history, match}) => {
   const dispatch = useDispatch();
@@ -16,16 +21,30 @@ const ProductListPage = ({ history, match}) => {
   const productDelete = useSelector((state) => state.productDelete);
   const { loading: loadingDelete, error: errorDelete, success: successDelete } = productDelete;
 
+const productCreate = useSelector((state) => state.productCreate);
+const {
+  loading: loadingCreate,
+  error: errorCreate,
+  success: successCreate,
+  product: createdProduct,
+} = productCreate;
+
+
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
   useEffect(() => {
-    if (userInfo && userInfo.isAdmin) {
-      dispatch(listProducts());
-    } else {
+    dispatch({ type: PRODUCT_CREATE_RESET });
+
+    if (!userInfo.isAdmin) {
       history.push("/login");
     }
-  }, [dispatch, history, userInfo, successDelete]);
+    if (successCreate) {
+      history.push(`admin/product/${createdProduct._id}/edit`);
+    } else {
+      dispatch(listProducts());
+    }
+  }, [dispatch, history, userInfo, successDelete, successCreate, createdProduct]);
 
   const deleteHandler = (id) => {
     if (window.confirm("Are you sure?")) {
@@ -33,8 +52,8 @@ const ProductListPage = ({ history, match}) => {
     }
   };
 
-  const createProductHandler = (product) => {
-      console.log("Create product");
+  const createProductHandler = () => {
+      dispatch(createProduct())
   }
 
   return (
@@ -44,13 +63,15 @@ const ProductListPage = ({ history, match}) => {
           <h1>Products</h1>
         </Col>
         <Col>
-          <Button style={{"marginLeft":"60%"}} onClick={createProductHandler}>
+          <Button style={{ marginLeft: "60%" }} onClick={createProductHandler}>
             <FaPlus /> Create Product
           </Button>
         </Col>
       </Row>
-      {loadingDelete && <Loader /> }
+      {loadingDelete && <Loader />}
       {errorDelete && <Message variant="danger">{errorDelete}</Message>}
+      {loadingCreate && <Loader />}
+      {errorCreate && <Message variant="danger">{errorCreate}</Message>}
       {loading ? (
         <Loader />
       ) : error ? (

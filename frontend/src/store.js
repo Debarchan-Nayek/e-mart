@@ -5,6 +5,7 @@ import {
   productListReducer,
   productDetailsReducer,
   productDeleteReducer,
+  productCreateReducer,
 } from "./reducers/productReducer"; 
 import {
   userLoginReducer,
@@ -30,7 +31,8 @@ const shippingAddressFromStorage = localStorage.getItem("shippingAddress") ? JSO
 const reducer = combineReducers({
   productList: productListReducer,
   productDetails: productDetailsReducer,
-  productDelete : productDeleteReducer,
+  productDelete: productDeleteReducer,
+  productCreate : productCreateReducer,
   cart: cartReducer,
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
