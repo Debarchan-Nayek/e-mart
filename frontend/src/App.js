@@ -16,6 +16,7 @@ import OrderPage from './pages/OrderPage';
 import OrderDetailsPage from './pages/OrderDetailsPage';
 import UserListPage from './pages/UserList';
 import UserEditPage from './pages/UserEditPage';
+import ProductListPage from './pages/ProductListPage';
 
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
             <Route path="/order/:id" component={OrderDetailsPage} />
             <Route path="/admin/userlist" component={UserListPage} />
             <Route path="/admin/user/:id/edit" component={UserEditPage} />
+            <Route path="/admin/productlist" component={ProductListPage} />
           </Container>
         </main>
       </Router>

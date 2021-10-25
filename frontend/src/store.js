@@ -4,6 +4,7 @@ import {composeWithDevTools} from 'redux-devtools-extension';
 import {
   productListReducer,
   productDetailsReducer,
+  productDeleteReducer,
 } from "./reducers/productReducer"; 
 import {
   userLoginReducer,
@@ -29,6 +30,7 @@ const shippingAddressFromStorage = localStorage.getItem("shippingAddress") ? JSO
 const reducer = combineReducers({
   productList: productListReducer,
   productDetails: productDetailsReducer,
+  productDelete : productDeleteReducer,
   cart: cartReducer,
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
