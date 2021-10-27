@@ -7,7 +7,6 @@ import Loader from "../../components/Loader";
 import FormContainer from "../../components/FormContainer";
 import { getUserDetails, updateUser } from "../../actions/userAction";
 import { USER_UPDATE_RESET } from "../../constants/userConstants";
-import { Redirect } from "react-router-dom";
 
 
 const UserEditPage = ({ location, match, history }) => {

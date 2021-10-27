@@ -16,7 +16,8 @@ import OrderPage from './pages/OrderPage';
 import OrderDetailsPage from './pages/OrderDetailsPage';
 import UserListPage from './pages/UserList';
 import UserEditPage from './pages/UserEditPage';
-import ProductListPage from './pages/ProductListPage';
+import ProductListPage from "./pages/ProductListPage";
+import ProductEditPage from "./pages/ProductEditPage";
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
             <Route path="/profile" component={ProfilePage} />
             <Route path="/register" component={Register} />
             <Route path="/product/:id" component={Productdetails} />
+            <Route path="/admin/product/:id/edit" component={ProductEditPage} />
             <Route path="/cart/:id?" component={CartPage} />
             <Route path="/shipping" component={ShippingPage} />
             <Route path="/payment" component={PaymentPage} />

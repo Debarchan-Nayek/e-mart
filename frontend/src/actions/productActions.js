@@ -11,6 +11,9 @@ import {
   PRODUCT_CREATE_REQUEST,
   PRODUCT_CREATE_SUCCESS,
   PRODUCT_CREATE_FAILURE,
+  PRODUCT_UPDATE_REQUEST,
+  PRODUCT_UPDATE_SUCCESS,
+  PRODUCT_UPDATE_FAILURE,
 } from "../constants/productConstants";
 import axios from 'axios';
 
@@ -81,10 +84,11 @@ export const listProductDetails = (id) => async(dispatch) => {
    }
  };
 
+
  export const createProduct = () => async (dispatch, getState) => {
    try {
      dispatch({
-       type: PRODUCT_CREATE_REQUEST, 
+       type: PRODUCT_CREATE_REQUEST,
      });
 
      const {
@@ -97,11 +101,11 @@ export const listProductDetails = (id) => async(dispatch) => {
        },
      };
 
-    const {data} = await axios.post(`/api/products`,{}, config);
+     const { data } = await axios.post(`/api/products`, {}, config);
 
      dispatch({
        type: PRODUCT_CREATE_SUCCESS,
-       payload: data
+       payload: data,
      });
    } catch (error) {
      dispatch({
@@ -113,3 +117,38 @@ export const listProductDetails = (id) => async(dispatch) => {
      });
    }
  };
+
+
+  export const updateProduct = (product) => async (dispatch, getState) => {
+    try {
+      dispatch({
+        type: PRODUCT_UPDATE_REQUEST,
+      });
+
+      const {
+        userLogin: { userInfo },
+      } = getState();
+
+      const config = {
+        headers: {
+          'Content-Type':'application/json',
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      };
+
+      const { data } = await axios.put(`/api/products/${product._id}`, product, config);
+
+      dispatch({
+        type: PRODUCT_UPDATE_SUCCESS,
+        payload: data,
+      });
+    } catch (error) {
+      dispatch({
+        type: PRODUCT_UPDATE_FAILURE,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      });
+    }
+  };
