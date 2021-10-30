@@ -14,6 +14,7 @@ import ShippingPage from "./pages/ShippingPage"
 import PaymentPage from './pages/PaymentPage';
 import OrderPage from './pages/OrderPage';
 import OrderDetailsPage from './pages/OrderDetailsPage';
+import OrderListPage from './pages/OrderList';
 import UserListPage from './pages/UserList';
 import UserEditPage from './pages/UserEditPage';
 import ProductListPage from "./pages/ProductListPage";
@@ -38,6 +39,7 @@ function App() {
             <Route path="/payment" component={PaymentPage} />
             <Route path="/placeorder" component={OrderPage} />
             <Route path="/order/:id" component={OrderDetailsPage} />
+            <Route path="/admin/orderlist" component={OrderListPage} />
             <Route path="/admin/userlist" component={UserListPage} />
             <Route path="/admin/user/:id/edit" component={UserEditPage} />
             <Route path="/admin/productlist" component={ProductListPage} />

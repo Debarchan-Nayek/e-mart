@@ -3,6 +3,7 @@ const express = require('express');
 const products = require('./data/products');
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
+const cors = require("cors");
 const connectDB = require("./config/db");
 const {errorHandler} = require("./middlewares/errorMiddleware");
 
@@ -13,6 +14,10 @@ const uploadRoutes = require('./routes/uploadRoutes');
 
 const app = express();
 app.use(express.json());
+
+app.use(cors({
+    origin: "*",
+}));
 
 //dotenv configuration
 dotenv.config();
@@ -34,6 +39,10 @@ app.get('/api/config/paypal',(req,res) => {
 
 __dirname = path.resolve()
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
+
+// app.use((req, res, next) => {
+//   res.header("Access-Control-Allow-Origin", "*");
+// }); 
 
 app.use(errorHandler);
 
