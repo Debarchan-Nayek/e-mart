@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Message from "../../components/Message";
 import Loader from "../../components/Loader";
 import { listOrders } from "../../actions/orderAction";
-import { FaCheck, FaTimes, FaEdit, FaTrash } from "react-icons/fa";
+import { FaTimes } from "react-icons/fa";
 
 const OrderListPage = ({ history }) => {
   const dispatch = useDispatch();

@@ -1,14 +1,19 @@
-const Products = require("../models/productModel");
 const asyncHandler = require("express-async-handler");
 const Product = require("../models/productModel");
 
 const getProducts = asyncHandler(async (req, res) => {
-  const products = await Products.find({});
-  res.json(products);
+  const products = await Product.find({});
+  res.json(products)
+});
+
+
+const getTopProducts = asyncHandler(async (req, res) => {
+  const topProducts = await Product.find({}).sort({ rating: -1}).limit(3);
+  res.json(topProducts);
 });
 
 const getProduct = asyncHandler(async (req, res) => {
-  const product = await Products.findById(req.params.id);
+  const product = await Product.findById(req.params.id);
   if (product) {
     res.json(product);
   } else {
@@ -17,7 +22,7 @@ const getProduct = asyncHandler(async (req, res) => {
 });
 
 const deleteProduct = asyncHandler(async (req, res) => {
-  const product = await Products.findById(req.params.id);
+  const product = await Product.findById(req.params.id);
   if (product) {
     await product.remove()
     res.json({message: 'Product Removed'})
@@ -100,6 +105,8 @@ const createProductReview = asyncHandler(async (req, res) => {
   }
 });
 
+
+
 module.exports = {
   getProducts,
   getProduct,
@@ -108,4 +115,5 @@ module.exports = {
   createProduct,
   updateProduct,
   createProductReview,
+  getTopProducts,
 };

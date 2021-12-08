@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import './style.css';
 import { logout } from "../../actions/userAction";
 
-const NavBar = (props) => {
+const NavBar = () => {
   const userLogin = useSelector(state => state.userLogin)
   const {userInfo} = userLogin
   const dispatch = useDispatch()
@@ -18,18 +18,17 @@ const NavBar = (props) => {
   return (
     <>
       <Navbar
-        className="nav-bar"
+        className="nav-bar p-4"
         bg="primary"
         expand="lg"
         variant="dark"
         collapseOnSelect
-        className="p-4"
       >
         <Container fluid>
           <LinkContainer to="/">
             <Navbar.Brand>E-Mart</Navbar.Brand>
           </LinkContainer>
-
+          
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
           <Navbar.Collapse

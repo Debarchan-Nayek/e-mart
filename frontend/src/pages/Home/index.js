@@ -4,7 +4,8 @@ import {listProducts} from '../../actions/productActions';
 import { Row, Col } from 'react-bootstrap';
 import ProductPage from '../Product';
 import Loader from '../../components/Loader';
-import Message from '../../components/Message'
+import Message from '../../components/Message';
+import  ProductCarousel  from '../Carousel';
 
 const HomePage = () => {
 
@@ -19,18 +20,22 @@ const HomePage = () => {
 
   return (
     <>
+      <ProductCarousel />
+
       {loading ? (
         <Loader />
       ) : error ? (
         <Message variant="danger">{error}</Message>
       ) : (
-        <Row>
-          {products.map((product) => (
-            <Col key={product._id} md={3}>
-              <ProductPage product={product} />
-            </Col>
-          ))}
-        </Row>
+        <>
+          <Row>
+            {products.map((product) => (
+              <Col key={product._id} md={3}>
+                <ProductPage product={product} />
+              </Col>
+            ))}
+          </Row>
+        </>
       )}
     </>
   );

@@ -75,7 +75,7 @@ const OrderDetailsPage = ({match, history}) => {
     }else{
       setSdkReady(true)
     }
-  }, [dispatch, orderId, order, successpay, successDeliver])
+  }, [dispatch, orderId, order, successpay, successDeliver, history, userInfo])
 
   return loading ? (
     <Loader />
