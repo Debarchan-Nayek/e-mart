@@ -2,13 +2,13 @@ const path  = require('path');
 const express = require('express');
 const dotenv = require("dotenv");
 const cors = require("cors");
-const connectDB = require("./config/db");
+const connectDB = require("./config/db.js");
 const {errorHandler} = require("./middlewares/errorMiddleware");
 
-const productRoutes = require('./routes/productRoutes');
-const usersRoutes = require('./routes/UsersRoute');
-const orderRoutes = require('./routes/orderRoutes');
-const uploadRoutes = require('./routes/uploadRoutes');
+const productRoutes = require('./routes/productRoutes.js');
+const usersRoutes = require('./routes/UsersRoute.js');
+const orderRoutes = require('./routes/orderRoutes.js');
+const uploadRoutes = require('./routes/uploadRoutes.js');
 
 
 
