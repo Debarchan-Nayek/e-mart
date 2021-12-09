@@ -1,7 +1,7 @@
 {
-  "name": "backend",
+  "name": "e-mart",
   "version": "1.0.0",
-  "description": "",
+  "description": "MERN ecommerce website",
   "main": "server.js",
   "scripts": {
     "start": "node backend/server.js",
