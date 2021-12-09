@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "MERN ecommerce website",
   "main": "server.js",
+  "type": "commonjs",
   "scripts": {
     "start": "node backend/server.js",
     "server": "nodemon backend/server.js",
