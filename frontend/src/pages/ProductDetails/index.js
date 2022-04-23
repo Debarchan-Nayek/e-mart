@@ -76,7 +76,7 @@ const ProductDetails = ({ history, match }) => {
                 <ListGroupItem>
                   <Rating
                     value={product.rating}
-                    total={`${product.numReview} Reviews`}
+                    total={`${product.numReviews} Reviews`}
                   />
                 </ListGroupItem>
                 <ListGroupItem>Price: {product.price}</ListGroupItem>
