@@ -3,7 +3,7 @@ import { FaStar, FaStarHalfAlt } from 'react-icons/fa';
 import {AiOutlineStar } from 'react-icons/ai';
 
 
-const Rating = ({ value, total }) => {
+const Rating = ({ value, text }) => {
   return (
     <div className="rating">
       <span style={{ color: "#FFC947" }}>
@@ -51,7 +51,7 @@ const Rating = ({ value, total }) => {
           <AiOutlineStar />
         )}
       </span>
-      <span>{total}</span>
+      <span> {text}</span>
     </div>
   );
 

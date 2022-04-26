@@ -60,7 +60,7 @@ const ProductDetails = ({ history, match }) => {
         <Message variant="danger">{error}</Message>
       ) : (
         <>
-          <Link to="/" className="btn btn-light ">
+          <Link to="/" className="btn btn-light" style={{marginBottom:"1rem"}}>
             <FaArrowAltCircleLeft />
             &nbsp; Go Back
           </Link>
@@ -76,7 +76,7 @@ const ProductDetails = ({ history, match }) => {
                 <ListGroupItem>
                   <Rating
                     value={product.rating}
-                    total={`${product.numReviews} Reviews`}
+                    text={`${product.numReviews} Reviews`}
                   />
                 </ListGroupItem>
                 <ListGroupItem>Price: {product.price}</ListGroupItem>
@@ -115,6 +115,7 @@ const ProductDetails = ({ history, match }) => {
                   className="btn-block"
                   type="button"
                   onClick={addToCartHandler}
+                  disabled={product.countInStock === 0}
                 >
                   Add to Cart
                 </Button>
@@ -127,7 +128,7 @@ const ProductDetails = ({ history, match }) => {
               {product.reviews.length === 0 && <Message>No reviews</Message>}
               <ListGroup variant="flush">
                 {product.reviews.map((review) => (
-                   <ListGroupItem key={review._id}>
+                  <ListGroupItem key={review._id}>
                     <strong>{review.name}</strong>
                     <Rating value={review.rating} />
                     <p>{review.createdAt.substring(0, 10)}</p>
@@ -136,7 +137,9 @@ const ProductDetails = ({ history, match }) => {
                 ))}
                 <ListGroup.Item>
                   <h2>Write a Customer Review</h2>
-                  {errorProductReview && <Message variant='danger'>{errorProductReview}</Message>}
+                  {errorProductReview && (
+                    <Message variant="danger">{errorProductReview}</Message>
+                  )}
                   {userInfo ? (
                     <>
                       <Form onSubmit={submitHandler}>
@@ -155,11 +158,18 @@ const ProductDetails = ({ history, match }) => {
                             <option value="5">5 - Excellent</option>
                           </Form.Control>
                         </Form.Group>
-                        <Form.Group controlId='comment'>
+                        <Form.Group controlId="comment">
                           <Form.Label>Comment</Form.Label>
-                          <Form.Control as='textarea' row='3' value={comment} onChange={(e) => setComment(e.target.value)}></Form.Control>
+                          <Form.Control
+                            as="textarea"
+                            row="3"
+                            value={comment}
+                            onChange={(e) => setComment(e.target.value)}
+                          ></Form.Control>
                         </Form.Group>
-                        <Button type='submit' variant='primary'>Submit</Button>
+                        <Button type="submit" variant="primary">
+                          Submit
+                        </Button>
                       </Form>
                     </>
                   ) : (
