@@ -20,8 +20,7 @@ const ProfilePage = ({ location, history }) => {
 
   const userDetails = useSelector((state) => state.userDetails);
   const { loading, error, user } = userDetails;
-  console.log("User details: ");
-  console.log(userDetails);
+
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
@@ -63,7 +62,7 @@ const ProfilePage = ({ location, history }) => {
         {error && <Message variant="danger">{error}</Message>}
         {success && <Message variant="success">Profile Updated</Message>}
         {loading && <Loader />}
-        <Form onSubmit={submitHandler}>
+        <Form onSubmit={submitHandler} className="mt-3">
           <Form.Group controlId="name">
             <Form.Label>Name</Form.Label>
             <Form.Control
@@ -104,7 +103,7 @@ const ProfilePage = ({ location, history }) => {
             ></Form.Control>
           </Form.Group>
 
-          <Button type="submit" variant="primary">
+          <Button className="mt-3" type="submit" variant="primary">
             Update
           </Button>
         </Form>
@@ -116,7 +115,7 @@ const ProfilePage = ({ location, history }) => {
         ) : errorOrders ? (
           <Message variant="danger">{errorOrders}</Message>
         ) : (
-          <Table striped bordered hover responsive className="table-sm">
+          <Table striped bordered hover responsive className="table-sm mt-3">
             <thead>
               <tr>
                 <th>ID</th>
@@ -124,7 +123,6 @@ const ProfilePage = ({ location, history }) => {
                 <th>TOTAL</th>
                 <th>PAID</th>
                 <th>DELIVERED</th>
-                <th></th>
               </tr>
             </thead>
             <tbody>

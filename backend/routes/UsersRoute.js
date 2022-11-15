@@ -17,6 +17,7 @@ const router = express.Router();
 
 //user registration
 router.route("/").post(registerUser)
+//Get a list of all users by admin
 router.route("/").get(protect, admin, getUsers);
 
 //post email and password auth
@@ -28,6 +29,7 @@ router
   .get(protect, getUserProfile)
   .put(protect, updateUserProfile);  
 
+  //Perform different User Profile updates by admin
 router
   .route("/:id")
   .delete(protect, admin, deleteUser)

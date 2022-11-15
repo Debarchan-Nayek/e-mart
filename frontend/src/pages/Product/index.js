@@ -5,7 +5,6 @@ import {Link} from 'react-router-dom'
 import './style.css';
 
 const ProductPage = ({product}) => {
-  console.log(product.numReviews);
   return (
     <>
       <Card className="my-3 p-3 rounded">

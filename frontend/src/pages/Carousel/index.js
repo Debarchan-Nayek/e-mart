@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Carousel, Image } from 'react-bootstrap';
+import { Carousel } from 'react-bootstrap';
 import Loader from '../../components/Loader';
 import Message from '../../components/Message';
 import { listTopProducts } from '../../actions/productActions';

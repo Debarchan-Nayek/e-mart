@@ -18,12 +18,15 @@ import Loader from "../../components/Loader";
 import Message from "../../components/Message";
 
 const ProductDetails = ({ history, match }) => {
+
+  //Declaring component level states
   const [qty, setQty] = useState(1);
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
 
   const dispatch = useDispatch();
 
+  //Parsing out the necessary 'state'; which would be further used
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
 
@@ -43,10 +46,12 @@ const ProductDetails = ({ history, match }) => {
     dispatch(listProductDetails(match.params.id));
   }, [dispatch, match, successProductReview]);
 
+  //Function to redirect to Cart Page
   const addToCartHandler = () => {
     history.push(`/cart/${match.params.id}?qty=${qty}`);
   }
 
+  //Handler for adding reviews
   const submitHandler = (e) => {
     e.preventDefault()
     dispatch(createProductReview(match.params.id, {rating, comment}))
@@ -60,7 +65,11 @@ const ProductDetails = ({ history, match }) => {
         <Message variant="danger">{error}</Message>
       ) : (
         <>
-          <Link to="/" className="btn btn-light" style={{marginBottom:"1rem"}}>
+          <Link
+            to="/"
+            className="btn btn-light"
+            style={{ marginBottom: "1rem" }}
+          >
             <FaArrowAltCircleLeft />
             &nbsp; Go Back
           </Link>
@@ -95,18 +104,20 @@ const ProductDetails = ({ history, match }) => {
               {product.countInStock > 0 && (
                 <ListGroupItem>
                   <Row>
-                    <Col>Qty</Col>
-                    <select
-                      default={1}
-                      value={qty}
-                      onChange={(e) => setQty(e.target.value)}
-                    >
-                      {[...Array(product.countInStock).keys()].map((x) => (
-                        <option key={x + 1} value={x + 1}>
-                          {x + 1}
-                        </option>
-                      ))}
-                    </select>
+                    <Col>Qty : </Col>
+                    <Col>
+                      <select
+                        default={1}
+                        value={qty}
+                        onChange={(e) => setQty(e.target.value)}
+                      >
+                        {[...Array(product.countInStock).keys()].map((x) => (
+                          <option key={x + 1} value={x + 1}>
+                            {x + 1}
+                          </option>
+                        ))}
+                      </select>
+                    </Col>
                   </Row>
                 </ListGroupItem>
               )}

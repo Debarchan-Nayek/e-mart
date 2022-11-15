@@ -32,7 +32,7 @@ const Login = ({location, history}) => {
   return (
     <>
       <FormContainer>
-        <h1>SIGN IN</h1>
+        <h1 style={{ paddingBottom: "4%" }}>SIGN IN</h1>
         {error && <Message variant="danger">{error}</Message>}
         {loading && <Loader />}
         <Form onSubmit={submitHandler}>
@@ -41,6 +41,7 @@ const Login = ({location, history}) => {
             <Form.Control
               type="email"
               value={email}
+              placeholder="Enter Email"
               onChange={(e) => setEmail(e.target.value)}
             ></Form.Control>
           </Form.Group>
@@ -49,6 +50,7 @@ const Login = ({location, history}) => {
             <Form.Control
               type="password"
               value={password}
+              placeholder="Enter password"
               onChange={(e) => setPassword(e.target.value)}
             ></Form.Control>
           </Form.Group>
@@ -56,7 +58,7 @@ const Login = ({location, history}) => {
             SIGN IN
           </Button>
         </Form>
-        <Col className="mt-2">
+        <Col className="mt-4">
           New User ?
           <Link to={redirect ? `register?redirect=${redirect}` : "/register"}>
             Register

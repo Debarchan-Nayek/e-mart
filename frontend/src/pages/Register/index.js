@@ -39,7 +39,7 @@ const Register = ({ location, history }) => {
   return (
     <>
       <FormContainer>
-        <h1>Sign Up</h1>
+        <h1 style={{ paddingBottom: "4%" }}>SIGN UP</h1>
         {error && <Message variant="danger">{error}</Message>}
         {loading && <Loader />}
         {message && <Message variant="danger">{message}</Message>}
@@ -84,7 +84,7 @@ const Register = ({ location, history }) => {
             ></Form.Control>
           </Form.Group>
 
-          <Button type="submit" variant="primary">
+          <Button className="mt-3" type="submit" variant="primary">
             Register
           </Button>
         </Form>

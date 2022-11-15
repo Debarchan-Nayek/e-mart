@@ -110,7 +110,7 @@ export const getUserDetails = (id) => async(dispatch, getState) => {
       Authorization: `Bearer ${userInfo.token}`
     },
   };
-  
+  //Here the id is not the actual user._id field, this is a parameterized query string which takes the value 'profile' sent from the ProfilePage
   const {data} = await axios.get(`/api/users/${id}`, config)
   dispatch({
     type: USER_DETAILS_SUCCESS,

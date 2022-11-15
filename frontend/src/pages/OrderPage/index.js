@@ -45,10 +45,10 @@ const OrderPage = ({history}) => {
   }
 
   useEffect(() => {
-      if(success){
-          history.push(`/order/${order._id}`)
-      }
-  }, [history, success])
+    if (success) {
+      history.push(`/order/${order._id}`);
+    }
+  }, [history, success, order._id]);
 
   return (
     <>
@@ -85,8 +85,8 @@ const OrderPage = ({history}) => {
                           <Image
                             src={item.image}
                             alt={item.name}
-                            fluid
                             rounded
+                            fluid
                           />
                         </Col>
                         <Col>

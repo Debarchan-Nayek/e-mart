@@ -29,10 +29,7 @@ import {
   orderDeliverReducer,
 } from "./reducers/orderReducer";
 
-const userInfoFromStorage = localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')): null
-
-const shippingAddressFromStorage = localStorage.getItem("shippingAddress") ? JSON.parse(localStorage.getItem('shippingAddress')) : {};
-
+//Combining multiple reducers into a single reducer
 const reducer = combineReducers({
   productList: productListReducer,
   productDetails: productDetailsReducer,
@@ -57,11 +54,22 @@ const reducer = combineReducers({
   orderDeliver: orderDeliverReducer,
 });
 
+
+//Fetching data from the local storage of the browser
+const userInfoFromStorage = localStorage.getItem("userInfo")
+  ? JSON.parse(localStorage.getItem("userInfo"))
+  : null;
+
+const shippingAddressFromStorage = localStorage.getItem("shippingAddress")
+  ? JSON.parse(localStorage.getItem("shippingAddress"))
+  : {};
+
 const cartItemsFromStorage = localStorage.getItem("cartItems")
   ? JSON.parse(localStorage.getItem("cartItems"))
   : [];
 
 
+  //Initialising the state of the application
 const initialState = {
   cart: {
     cartItems: cartItemsFromStorage,
@@ -69,7 +77,10 @@ const initialState = {
   },
   userLogin: { userInfo: userInfoFromStorage },
 };
+
 const middleware = [thunk];
+
+//Creating the redux store
 const store = createStore(
     reducer, 
     initialState, 
